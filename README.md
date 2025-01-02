@@ -8,6 +8,7 @@ El programa solicita el XML al Web Service del BAC mediante una solicitud HTTP G
 
 Lanzamiento
 Fecha: 1/1/2025
+
 Plataforma: Vercel
 
 V: 1.0.0
