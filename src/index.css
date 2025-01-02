@@ -37,6 +37,13 @@ h1 {
     width: 50px;
     left: 150px; /* Coloca el logo 10px desde el borde derecho */}
 
+.mail {
+    position: relative;
+    width: 50px;
+    top: 10px;
+    left: 30px; /* Coloca el logo 10px desde el borde derecho */
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -119,4 +126,3 @@ button:hover {
 .rate-item p {
     margin: 0;
 }
-

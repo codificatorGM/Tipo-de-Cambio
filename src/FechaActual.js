@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import github_mark from './imagenes/github-mark.svg';
+import mail from './imagenes/mail.svg';
 
 function MostrarFecha() {
     const [fecha, setFecha] = useState('');
@@ -21,9 +22,12 @@ function MostrarFecha() {
         <div className="disclaimer">
             <p className="fechaActual" >Fecha Actual: {fecha}</p>
             <div className="seccionLinea">
-                *Datos obtenidos de <a href={"https://www.baccredomatic.com/es-cr"}> BAC Credomatic© - Costa Rica</a>
-                <a href="https://github.com/codificatorGM/Tipo-de-Cambio"> <img src={github_mark} alt="github_mark"
-                                                                                className="github-img"/></a>
+                <p>*Datos obtenidos de <a href={"https://www.baccredomatic.com/es-cr"}> BAC Credomatic© - Costa Rica</a>
+                    <a href="https://github.com/codificatorGM/Tipo-de-Cambio"> <img src={github_mark} alt="github_mark"
+                                                                                    className="github-img"/></a>
+                    <a href="mailto:hruns2000@gmail.com"> <img src={mail} alt="mail"
+                                                                                    className="mail"/></a>
+                </p>
             </div>
         </div>
     );
