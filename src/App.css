@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Make the App container fill the full height of the screen */
+  background-image: url('./imagenes/bg.jpg'); /* Cambia esto al path correcto */
+  background-size: cover; /* Asegura que la imagen cubra todo */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
 .App-logo {
@@ -19,16 +23,15 @@
  */
 
 .App-header {
-  background-color: #002B5B;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+
 }
 
 .App-body {
-  background-color: #002B5B;
   display: flex;
   height: 100%;
   align-items: center;

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './imagenes/logo.svg';
 
 import './App.css';
 import RadiosConversion from "./RadiosConversion";
