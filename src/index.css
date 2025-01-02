@@ -37,6 +37,14 @@ h1 {
     width: 50px;
     left: 150px; /* Coloca el logo 10px desde el borde derecho */}
 
+@media (max-width: 768px) {
+    .github-img {
+        width: 30px; /* Ajusta el tamaño en dispositivos móviles */
+        bottom: 5px; /* Coloca el logo un poco más cerca del borde inferior */
+        right: 5px; /* Coloca el logo un poco más cerca del borde derecho */
+    }
+}
+
 .mail {
     position: relative;
     width: 50px;
