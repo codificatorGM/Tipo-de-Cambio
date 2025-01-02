@@ -22,7 +22,7 @@ h1 {
     position: relative;
 }
 
-@media {
+@media (max-width: 600px) {
     .disclaimer {
         filter: brightness(60%);
         font-size: 0.9rem;
@@ -52,12 +52,12 @@ h1 {
     .github-img,
     .mail {
         width: 40px; /* Reduce size on mobile */
-        bottom: 15px; /* Adjust bottom positioning */
+        bottom: 5px; /* Adjust bottom positioning */
         right: 15px; /* Adjust right positioning */
     }
 
     .mail {
-        bottom: 60px; /* Adjust spacing between icons on mobile */
+        bottom: 45px; /* Adjust spacing between icons on mobile */
     }
 }
 
