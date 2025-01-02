@@ -23,7 +23,13 @@ h1 {
 .seccionLinea {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 3px;
+}
+
+.github-img {
+    position: relative;
+    width: 50px;
+    height: auto;
 }
 
 code {
