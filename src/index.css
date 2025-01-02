@@ -57,6 +57,7 @@ h1 {
     }
 
     .mail {
+        width: 40px;
         bottom: 45px; /* Adjust spacing between icons on mobile */
     }
 }
