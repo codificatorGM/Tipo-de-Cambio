@@ -22,6 +22,15 @@ h1 {
     position: relative;
 }
 
+@media {
+    .disclaimer {
+        filter: brightness(60%);
+        font-size: 0.9rem;
+        text-align: left;
+        position: relative;
+    }
+}
+
 .fechaActual {
 }
 
