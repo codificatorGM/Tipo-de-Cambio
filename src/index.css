@@ -18,12 +18,17 @@ h1 {
 .disclaimer {
     filter: brightness(60%);
     font-size: 0.9rem;
+    text-align: center;
+}
+
+.fechaActual {
+    margin-bottom: -25px;
 }
 
 .seccionLinea {
-    display: flex;
     align-items: center;
     gap: 3px;
+    font-size: 0.8rem;
 }
 
 .github-img {
@@ -98,6 +103,7 @@ button:hover {
     font-size: 20px;
     font-weight: bold;
     color: #002B5B;
+    margin-bottom: 50px;
 }
 
 .rate-value {

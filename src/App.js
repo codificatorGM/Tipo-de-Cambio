@@ -12,15 +12,18 @@ function App() {
                     <h1>Tipo de Cambio</h1>
                 </div>
                 <img src={logo} className="App-logo" alt="logo"/>
+            </header>
+                <main className="App-body">
                 <div>
                     <h1>Conversión por Divisas</h1>
                     <RadiosConversion/> {/* Render RadiosConversion component */}
                 </div>
+          </main>
+            <footer className="App-footer">
                 <div>
                     <FechaActual/> {}
                 </div>
-
-            </header>
+            </footer>
         </div>
     );
 }

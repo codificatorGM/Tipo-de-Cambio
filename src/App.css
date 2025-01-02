@@ -1,10 +1,14 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Make the App container fill the full height of the screen */
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
+  width: 20vmin;
 }
 /*
 @media (prefers-reduced-motion: no-preference) {
@@ -16,13 +20,24 @@
 
 .App-header {
   background-color: #002B5B;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.App-body {
+  background-color: #002B5B;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  flex: 1;
+}
+
+.App-footer {
 }
 
 .App-link {

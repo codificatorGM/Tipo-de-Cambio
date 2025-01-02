@@ -19,10 +19,9 @@ function MostrarFecha() {
 
     return (
         <div className="disclaimer">
-            <p>Fecha Actual: {fecha}</p>
+            <p className="fechaActual" >Fecha Actual: {fecha}</p>
             <div className="seccionLinea">
-                <p>*Datos obtenidos de </p>
-                <a href={"https://www.baccredomatic.com/es-cr"}> BAC Credomatic© - Costa Rica</a>
+                *Datos obtenidos de <a href={"https://www.baccredomatic.com/es-cr"}> BAC Credomatic© - Costa Rica</a>
                 <a href="https://github.com/codificatorGM/Tipo-de-Cambio"> <img src={github_mark} alt="github_mark"
                                                                                 className="github-img"/></a>
             </div>
