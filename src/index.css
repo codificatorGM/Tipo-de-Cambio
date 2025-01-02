@@ -23,33 +23,41 @@ h1 {
 }
 
 .fechaActual {
-    margin-bottom: -25px;
 }
 
-.seccionLinea {
-    align-items: center;
-    gap: 3px;
-    font-size: 0.8rem;
-}
-
-.github-img {
-    position: relative;
-    width: 50px;
-    left: 150px; /* Coloca el logo 10px desde el borde derecho */}
-
-@media (max-width: 768px) {
-    .github-img {
-        width: 30px; /* Ajusta el tamaño en dispositivos móviles */
-        bottom: 5px; /* Coloca el logo un poco más cerca del borde inferior */
-        right: 5px; /* Coloca el logo un poco más cerca del borde derecho */
-    }
+.github-img,
+.mail {
+    position: fixed; /* Fix the position relative to the viewport */
+    bottom: 10px; /* Space from the bottom of the screen */
+    right: 10px; /* Space from the right side of the screen */
+    width: 50px; /* Set the size */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .mail {
-    position: relative;
+    bottom: 70px; /* Place the mail icon slightly above the GitHub icon */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .github-img,
+    .mail {
+        width: 40px; /* Reduce size on mobile */
+        bottom: 15px; /* Adjust bottom positioning */
+        right: 15px; /* Adjust right positioning */
+    }
+
+    .mail {
+        bottom: 60px; /* Adjust spacing between icons on mobile */
+    }
+}
+
+
+
+
+.mail {
+    position: fixed;
     width: 50px;
-    top: 10px;
-    left: 30px; /* Coloca el logo 10px desde el borde derecho */
 }
 
 code {
