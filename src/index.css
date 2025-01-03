@@ -43,6 +43,11 @@ h1 {
     height: auto; /* Maintain aspect ratio */
 }
 
+.logobancos {
+    position: relative; /* Fix the position relative to the viewport */
+    width: 100px; /* Set the size */
+}
+
 .mail {
     bottom: 70px; /* Place the mail icon slightly above the GitHub icon */
 }
@@ -121,12 +126,30 @@ button:disabled {
 }
 
 button:hover {
+    background-color: #fa9152;
+    transition: background-color 0.5s ease;
 }
 
 .rates-container {
     display: flex;
     justify-content: space-around;
     gap: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: #002B5B;
+    margin-bottom: 50px;
+}
+
+.eur-rates-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
