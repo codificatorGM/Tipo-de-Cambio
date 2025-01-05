@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 module.exports = async (req, res) => {
-    try {
+
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
 
@@ -31,8 +31,4 @@ module.exports = async (req, res) => {
             conversionSBCompra: compraValue,
             conversionSBVenta: ventaValue
         });
-    } catch (error) {
-        console.error("Error with Puppeteer:", error);
-        res.status(500).json({ error: "Failed to fetch Scotiabank data" });
-    }
 };
