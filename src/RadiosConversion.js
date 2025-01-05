@@ -58,15 +58,15 @@ function RadiosConversion() {
         verificarDatosBP(dataBP);
 
         try {
-            const responseBNC = await fetch("http://localhost:3001/api/fetch-dollars");
+            const responseBNC = await fetch("http://localhost:3001/api/fetch-usd-compra");
             const dataBNC = await responseBNC.json();
             setConversionUsdCompraBN(dataBNC.conversionUsdCompraBN);
 
-            const responseBNV = await fetch("http://localhost:3001/api/fetch-dollars-venta");
+            const responseBNV = await fetch("http://localhost:3001/api/fetch-usd-venta");
             const dataBNV = await responseBNV.json();
             setConversionUsdVentaBN(dataBNV.conversionUsdVentaBN);
 
-            const responseBNCE = await fetch("http://localhost:3001/api/fetch-eur");
+            const responseBNCE = await fetch("http://localhost:3001/api/fetch-eur-compra");
             const dataBNCE = await responseBNCE.json();
             setConversionEurCompraBN(dataBNCE.conversionEurCompraBN);
 
