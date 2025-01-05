@@ -12,9 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Enable CORS for all routes
-app.use(cors({
-    origin: ["https://tipo-de-cambio.vercel.app", "http://localhost:3001", "http://localhost:3000"]
-}));
+app.use(cors());
 
 // Define API routes using the imported functions
 app.get('/api/fetch-usd-compra', fetchUsdCompra);
