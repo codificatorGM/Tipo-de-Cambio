@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import github_mark from './imagenes/github-mark.svg';
-import mail from './imagenes/mail.svg';
+import github_mark from '../imagenes/github-mark.svg';
+import mail from '../imagenes/mail.svg';
 
 function MostrarFecha() {
     const [fecha, setFecha] = useState('');

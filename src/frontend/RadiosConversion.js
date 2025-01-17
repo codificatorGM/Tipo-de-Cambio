@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import logobac from './imagenes/logobac.svg';
-import logobccr from './imagenes/logobccr.svg';
-import logobp from './imagenes/logobp.svg';
-import logobn from './imagenes/logobn.svg';
-import logosb from './imagenes/logosb.svg';
+import logobac from '../imagenes/logobac.svg';
+import logobccr from '../imagenes/logobccr.svg';
+import logobp from '../imagenes/logobp.svg';
+import logobn from '../imagenes/logobn.svg';
+import logosb from '../imagenes/logosb.svg';
 
 function RadiosConversion() {
     const [conversionUsdCompraBAC, setConversionUsdCompraBAC] = useState(null);
@@ -58,28 +58,28 @@ function RadiosConversion() {
         verificarDatosBP(dataBP);
 
         try {
-            const responseBNC = await fetch("http://localhost:3001/api/fetch-usd-compra");
-            const dataBNC = await responseBNC.json();
+            const respuestaBNC = await fetch("http://localhost:3001/api/fetch-usd-compra");
+            const dataBNC = await respuestaBNC.json();
             setConversionUsdCompraBN(dataBNC.conversionUsdCompraBN);
 
-            const responseBNV = await fetch("http://localhost:3001/api/fetch-usd-venta");
-            const dataBNV = await responseBNV.json();
+            const respuestaBNV = await fetch("http://localhost:3001/api/fetch-usd-venta");
+            const dataBNV = await respuestaBNV.json();
             setConversionUsdVentaBN(dataBNV.conversionUsdVentaBN);
 
-            const responseBNCE = await fetch("http://localhost:3001/api/fetch-eur-compra");
-            const dataBNCE = await responseBNCE.json();
+            const respuestaBNCE = await fetch("http://localhost:3001/api/fetch-eur-compra");
+            const dataBNCE = await respuestaBNCE.json();
             setConversionEurCompraBN(dataBNCE.conversionEurCompraBN);
 
-            const responseBNVE = await fetch("http://localhost:3001/api/fetch-eur-venta");
-            const dataBNVE = await responseBNVE.json();
+            const respuestaBNVE = await fetch("http://localhost:3001/api/fetch-eur-venta");
+            const dataBNVE = await respuestaBNVE.json();
             setConversionEurVentaBN(dataBNVE.conversionEurVentaBN);
 
-            const responseSBC = await fetch("http://localhost:3001/api/fetch-sb-radios");
-            const dataSBC = await responseSBC.json();
+            const respuestaSBC = await fetch("http://localhost:3001/api/fetch-sb-radios");
+            const dataSBC = await respuestaSBC.json();
             setConversionUsdCompraSB(dataSBC.conversionSBCompra);
 
-            const responseSBV = await fetch("http://localhost:3001/api/fetch-sb-radios");
-            const dataSBV = await responseSBV.json();
+            const respuestaSBV = await fetch("http://localhost:3001/api/fetch-sb-radios");
+            const dataSBV = await respuestaSBV.json();
             setConversionUsdVentaSB(dataSBV.conversionSBVenta);
 
         } catch (error) {

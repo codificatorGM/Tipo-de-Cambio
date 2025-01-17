@@ -1,4 +1,4 @@
-import logo from './imagenes/logo.svg';
+import logo from '../imagenes/logo.svg';
 
 import './App.css';
 import RadiosConversion from "./RadiosConversion";
@@ -16,7 +16,7 @@ function App() {
             <main className="App-body">
                 <div>
                     <h1>Conversión por Divisas</h1>
-                    <RadiosConversion/> {/* Render RadiosConversion component */}
+                    <RadiosConversion/> {/* Renderiza RadiosConversion */}
                 </div>
             </main>
             <footer className="App-footer">
