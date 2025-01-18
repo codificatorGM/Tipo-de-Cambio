@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import logobac from '../imagenes/logobac.svg';
 import logobccr from '../imagenes/logobccr.svg';
 import logobp from '../imagenes/logobp.svg';
@@ -28,9 +28,11 @@ function RadiosConversion() {
     const [conversionUsdVentaSB, setConversionUsdVentaSB] = useState(null);
 
     const [mostrarDolares, setMostrarDolares] = useState(true);
+    const [valorBanco, setValorBanco] = useState("bncr");
 
     // Function to fetch currency conversion rates
     const fetchConversionRate = async () => {
+        //Obtener tipo de cambio BAC, BCCR y Banco Popular
         const respuestaBAC = await fetch("https://www.sucursalelectronica.com/exchangerate/showXmlExchangeRate.do");
         const respuestaBCCR = await fetch("https://api.hacienda.go.cr/indicadores/tc");
         const dataBCCR = await respuestaBCCR.json();
@@ -56,6 +58,8 @@ function RadiosConversion() {
         setconversionEurCrcBCCR(dataBCCR.euro.colones);
 
         verificarDatosBP(dataBP);
+
+        // Obtener tipo de cambio Banco Nacional de Costa Rica y ScotiaBank
 
         try {
             const respuestaBNC = await fetch("http://localhost:3001/api/fetch-usd-compra");
@@ -93,6 +97,8 @@ function RadiosConversion() {
         }
     };
 
+    // Verificar tipo de cambio de Banco Popular
+
     function verificarDatosBP(dataBP) {
         const indicadores = dataBP.Indicadores;
 
@@ -113,9 +119,64 @@ function RadiosConversion() {
         fetchConversionRate();
     }, []);
 
-    let content;
+    //Mostrar contenido imagen conversion
+
+    const imagenConversion = () => {
+        switch (valorBanco) {
+            case "bncr":
+                return <div>
+                    <img src={logobccr} alt="BNCR Logo" className="logobancos"/>
+                    <p className="p-conversion"> 1 U$D = ₡{conversionCompraUsdBCCR} <br/>
+                        1 CRC = ${(1 / conversionCompraUsdBCCR).toFixed(4)}
+                    </p>
+                </div>
+            case "bn":
+                return <div>
+                    <img src={logobn} alt="BN Logo" className="logobancos"/>
+                    <div>
+                    </div>
+                    <p> 1 U$D = ₡{conversionUsdCompraBN} <br/>
+                        1 CRC = ${(1 / conversionUsdCompraBN).toFixed(4)}
+                    </p>
+                </div>
+            case "bac":
+                return <div><img src={logobac} alt="BAC Logo" className="logobancos"/>
+                    <div>
+                    </div>
+                    <p> 1 U$D = ₡{conversionUsdCompraBAC} <br/>
+                        1 CRC = ${(1 / conversionUsdCompraBAC).toFixed(4)}
+                    </p>
+                </div>
+            case "bp":
+                return <div><img src={logobp} alt="BP Logo" className="logobancos"/>
+                    <div>
+                    </div>
+                    <p> 1 U$D = ₡{conversionUsdCompraBP} <br/>
+                        1 CRC = ${(1 / conversionUsdCompraBP).toFixed(4)}
+                    </p>
+                </div>
+            case "sb":
+                return <div><img src={logosb} alt="SB Logo" className="logobancos"/>
+                    <div>
+                    </div>
+                    <p> 1 U$D = ₡{conversionUsdCompraSB} <br/>
+                        1 CRC = ${(1 / conversionUsdCompraSB).toFixed(4)}
+                    </p>
+                </div>
+            default:
+                return null;
+        }
+    };
+
+    const cambioBanco = (event) => {
+        setValorBanco(event.target.value); // Actualizar banco en cambio de estado
+    };
+
+    //Mostrar contenido tipo de cambio
+
+    let contenido;
     if (mostrarDolares) {
-        content = (
+        contenido = (
             <>
                 <div className="rates-container">
                     <img src={logobccr} alt={logobccr}
@@ -187,7 +248,7 @@ function RadiosConversion() {
             </>
         )
     } else if (!mostrarDolares) {
-        content = (
+        contenido = (
             <>
                 <div className="eur-rates-container">
                     <img src={logobccr} alt={logobccr}
@@ -233,19 +294,43 @@ function RadiosConversion() {
     }
 
     return (
-        <div>
-            <div>
-                <p className="p">Moneda:</p>
-                <button onClick={() => setMostrarDolares(true)}
-                        disabled={mostrarDolares}>USD
-                </button>
-                <button onClick={() => setMostrarDolares(false)}
-                        disabled={!mostrarDolares}>EUR
-                </button>
+        <>
+            <div className="rates-container-conversion">
+                <div className="left-content">
+                    <div className="input-container">
+                        <select name="bancos" id="bancos" value={valorBanco} onChange={cambioBanco}>
+                            <option value="bncr">BNCR</option>
+                            <option value="bn">BN</option>
+                            <option value="bac">BAC</option>
+                            <option value="bp">Banco Popular</option>
+                            <option value="sb">ScotiaBank</option>
+                        </select>
+                        <form id="monto">
+                            <input type="text" placeholder="Monto"/> <br/>
+                            <input type="button" onClick="" value="Submit"/>
+                        </form>
+                    </div>
+                </div>
+                <div className="right-content">
+                    {imagenConversion()}
+                </div>
             </div>
-            <br/>
-            {content}
-        </div>
+
+
+            <div>
+                <div>
+                    <p className="p">Moneda:</p>
+                    <button onClick={() => setMostrarDolares(true)}
+                            disabled={mostrarDolares}>USD
+                    </button>
+                    <button onClick={() => setMostrarDolares(false)}
+                            disabled={!mostrarDolares}>EUR
+                    </button>
+                </div>
+                <br/>
+                {contenido}
+            </div>
+        </>
     );
 }
 

@@ -68,8 +68,6 @@ h1 {
 }
 
 
-
-
 .mail {
     position: fixed;
     width: 50px;
@@ -144,6 +142,33 @@ button:hover {
     font-weight: bold;
     color: #002B5B;
     margin-bottom: 50px;
+}
+
+.rates-container-conversion {
+    display: flex;
+    justify-content: space-between; /* Divide el espacio entre los dos extremos */
+    gap: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: #002B5B;
+    margin-bottom: 50px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column; /* Elementos uno debajo del otro */
+    gap: 80px; /* Espacio entre el select y el formulario */
+}
+
+.right-content {
+    text-align: right;
+    flex: 1;
 }
 
 .eur-rates-container {

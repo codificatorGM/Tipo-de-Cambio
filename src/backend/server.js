@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-// Import API routes
+// Importar rutas de APIs
 const fetchUsdCompra = require('./api/fetch-usd-compra');
 const fetchUsdVenta = require('./api/fetch-usd-venta');
 const fetchEurCompra = require('./api/fetch-eur-compra');
@@ -11,10 +11,10 @@ const fetchSbRadios = require('./api/fetch-sb-radios');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Enable CORS for all routes
+// CORS activado para todas las rutas
 app.use(cors());
 
-// Define API routes using the imported functions
+// Definir las rutas de APIs
 app.get('/api/fetch-usd-compra', fetchUsdCompra);
 app.get('/api/fetch-usd-venta', fetchUsdVenta);
 app.get('/api/fetch-eur-compra', fetchEurCompra);

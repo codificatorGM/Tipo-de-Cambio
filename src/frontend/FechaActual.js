@@ -12,11 +12,11 @@ function MostrarFecha() {
     }
 
     useEffect(() => {
-        actualizarTiempo(); // Set the initial time
-        const interval = setInterval(actualizarTiempo, 1000); // Update time every second
-        // Cleanup function to clear the interval when the component unmounts
+        actualizarTiempo(); // Estado inicial
+        const interval = setInterval(actualizarTiempo, 1000); // Actualizar temporarizador cada segundo
+        // Limpia temporizador cuando el componente se desmonta
         return () => clearInterval(interval);
-    }, []); // Empty dependency array ensures this runs only once on mount
+    }, []);
 
     return (
         <div className="disclaimer">
