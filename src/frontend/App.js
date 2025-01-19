@@ -16,12 +16,12 @@ function App() {
             <main className="App-body">
                 <div>
                     <h1>Conversión por Divisas</h1>
-                    <RadiosConversion/> {/* Renderiza RadiosConversion */}
+                    <RadiosConversion/>
                 </div>
             </main>
             <footer className="App-footer">
                 <div>
-                    <FechaActual/> {}
+                    <FechaActual/>
                 </div>
             </footer>
         </div>

@@ -36,43 +36,42 @@ h1 {
 
 .github-img,
 .mail {
-    position: fixed; /* Fix the position relative to the viewport */
-    bottom: 10px; /* Space from the bottom of the screen */
-    right: 10px; /* Space from the right side of the screen */
-    width: 50px; /* Set the size */
-    height: auto; /* Maintain aspect ratio */
+    position: fixed; /* Fija la posición relativa al viewport */
+    bottom: 10px; /* Espacio desde la parte inferior de la pantalla */
+    right: 10px; /* Espacio desde el lado derecho de la pantalla */
+    width: 50px; /* Establece el tamaño */
+    height: auto; /* Mantiene la proporción */
 }
 
 .logobancos {
-    position: relative; /* Fix the position relative to the viewport */
-    width: 100px; /* Set the size */
+    position: relative; /* Fija la posición relativa al viewport */
+    width: 100px; /* Establece el tamaño */
 }
 
 .logobanderas {
     display: flex;
-    width: 50px; /* Set the size */
-    height: 50px; /* Set the size */
+    width: 50px; /* Establece el tamaño */
+    height: 50px; /* Establece el tamaño */
 }
 
 .mail {
-    bottom: 70px; /* Place the mail icon slightly above the GitHub icon */
+    bottom: 70px; /* Coloca el icono de correo un poco más arriba del icono de GitHub */
 }
 
-/* Media query for smaller screens */
+/* Consulta de medios para pantallas más pequeñas */
 @media (max-width: 600px) {
     .github-img,
     .mail {
-        width: 40px; /* Reduce size on mobile */
-        bottom: 5px; /* Adjust bottom positioning */
-        right: 15px; /* Adjust right positioning */
+        width: 40px; /* Reduce el tamaño en dispositivos móviles */
+        bottom: 5px; /* Ajusta la posición inferior */
+        right: 15px; /* Ajusta la posición derecha */
     }
 
     .mail {
         width: 40px;
-        bottom: 45px; /* Adjust spacing between icons on mobile */
+        bottom: 45px; /* Ajusta el espacio entre los iconos en dispositivos móviles */
     }
 }
-
 
 .mail {
     position: fixed;
@@ -218,8 +217,8 @@ button:hover {
     margin-top: 15px;
     text-align: left;
     display: flex;
-    align-items: center; /* Align input and button vertically */
-    gap: 10px; /* Space between input and button */
+    align-items: center; /* Alinea el input y el botón verticalmente */
+    gap: 10px; /* Espacio entre el input y el botón */
 }
 
 .tcambio-conversion {

@@ -40,34 +40,33 @@ function RadiosConversion() {
     const fetchConversionRate = async () => {
         //Obtener tipo de cambio BAC, BCCR y Banco Popular
         const respuestaBAC = await fetch("https://www.sucursalelectronica.com/exchangerate/showXmlExchangeRate.do");
-        const respuestaBCCR = await fetch("https://api.hacienda.go.cr/indicadores/tc");
-        const dataBCCR = await respuestaBCCR.json();
-        const respuestaBP = await fetch("https://www.appsbp.com/WsSINPEMovilV2/ServiciosGeneral/indicadoresfinancieros");
-        const dataBP = await respuestaBP.json();
         const dataBAC = await respuestaBAC.text();
         const parserDOM = new DOMParser();
         const xmlDoc = parserDOM.parseFromString(dataBAC, "application/xml");
 
-        const radioCompraUsdBAC = xmlDoc.querySelector("buyRateUSD") ? xmlDoc.querySelector("buyRateUSD").textContent : null;
-        const radioVentaUsdBAC = xmlDoc.querySelector("saleRateUSD") ? xmlDoc.querySelector("saleRateUSD").textContent : null;
-        const radioCompraEurBAC = xmlDoc.querySelector("buyRateEUR") ? xmlDoc.querySelector("buyRateEUR").textContent : null;
-        const radioVentaEurBAC = xmlDoc.querySelector("saleRateEUR") ? xmlDoc.querySelector("saleRateEUR").textContent : null;
+        const radioCompraUsdBAC = xmlDoc.querySelector("buyRateUSD").textContent;
+        const radioVentaUsdBAC = xmlDoc.querySelector("saleRateUSD").textContent;
+        const radioCompraEurBAC = xmlDoc.querySelector("buyRateEUR").textContent;
+        const radioVentaEurBAC = xmlDoc.querySelector("saleRateEUR").textContent;
 
         setConversionUsdCompraBAC(radioCompraUsdBAC);
         setConversionUsdVentaBAC(radioVentaUsdBAC);
         setConversionEurVentaBAC(radioCompraEurBAC);
         setConversionEurCompraBAC(radioVentaEurBAC);
 
+        const respuestaBCCR = await fetch("https://api.hacienda.go.cr/indicadores/tc");
+        const dataBCCR = await respuestaBCCR.json(); //Obtener respuesta formato json
         setconversionCompraUsdBCCR(dataBCCR.dolar.compra.valor);
         setconversionVentaUsdBCCR(dataBCCR.dolar.venta.valor);
         setconversionEurUsdBCCR(dataBCCR.euro.dolares);
         setconversionEurUsdBCCR(dataBCCR.euro.valor);
         setconversionEurCrcBCCR(dataBCCR.euro.colones);
 
+        const respuestaBP = await fetch("https://www.appsbp.com/WsSINPEMovilV2/ServiciosGeneral/indicadoresfinancieros");
+        const dataBP = await respuestaBP.json(); //Obtener respuesta formato json
         verificarDatosBP(dataBP);
 
         // Obtener tipo de cambio Banco Nacional de Costa Rica y ScotiaBank
-
         try {
             const respuestaBNC = await fetch("http://localhost:3001/api/fetch-usd-compra");
             const dataBNC = await respuestaBNC.json();
@@ -105,7 +104,6 @@ function RadiosConversion() {
     };
 
     // Verificar tipo de cambio de Banco Popular
-
     function verificarDatosBP(dataBP) {
         const indicadores = dataBP.Indicadores;
 
@@ -127,7 +125,6 @@ function RadiosConversion() {
     }, []);
 
     //Mostrar contenido imagen conversion
-
     const imagenConversion = () => {
         switch (valorBanco) {
             case "bncr":
@@ -191,11 +188,10 @@ function RadiosConversion() {
         e.preventDefault();
         const montoInicial = parseFloat(monto);
         const montoFinal = montoInicial * conversionCompraUsdBCCR;
-        setResultado(montoFinal.toFixed(2)); // Update the result
+        setResultado(montoFinal.toFixed(2)); //Actualizar resultado a montoFinal
     };
 
     //Mostrar contenido tipo de cambio
-
     let contenido;
     if (mostrarDolares) {
         contenido = (
@@ -314,7 +310,6 @@ function RadiosConversion() {
             </>
         )
     }
-
     return (
         <>
             <div className="tcambio-banderas">
