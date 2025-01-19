@@ -61,6 +61,7 @@ function RadiosConversion() {
         setconversionCompraUsdBCCR(dataBCCR.dolar.compra.valor);
         setconversionVentaUsdBCCR(dataBCCR.dolar.venta.valor);
         setconversionEurUsdBCCR(dataBCCR.euro.dolares);
+        setconversionEurUsdBCCR(dataBCCR.euro.valor);
         setconversionEurCrcBCCR(dataBCCR.euro.colones);
 
         verificarDatosBP(dataBP);
