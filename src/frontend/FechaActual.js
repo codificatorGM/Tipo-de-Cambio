@@ -22,7 +22,7 @@ function MostrarFecha() {
         <div className="disclaimer">
             <p className="fechaActual" >Fecha Actual: {fecha}</p>
             <div className="seccionLinea">
-                <p>*Datos obtenidos de <a href={"https://www.baccredomatic.com/es-cr"}> bancos privados y públicos de Costa Rica</a>
+                <p>*Datos obtenidos de <a href={"https://github.com/codificatorGM/api-bancos-costa-rica"}> APIs abiertas bancos Costa Rica</a>
                     <a href="https://github.com/codificatorGM/Tipo-de-Cambio"> <img src={github_mark} alt="github_mark"
                                                                                     className="github-img"/></a>
                     <a href="mailto:hruns2000@gmail.com"> <img src={mail} alt="mail"

@@ -22,12 +22,51 @@ h1 {
     position: relative;
 }
 
+/* Modificaciones para dispositivos moviles */
 @media (max-width: 600px) {
     .disclaimer {
         filter: brightness(60%);
         font-size: 0.9rem;
         text-align: left;
         position: relative;
+    }
+    .github-img,
+    .mail {
+        width: 40px; /* Reduce el tamaño en dispositivos móviles */
+        bottom: 5px; /* Ajusta la posición inferior */
+        right: 15px; /* Ajusta la posición derecha */
+    }
+
+    .mail {
+        width: 40px;
+        bottom: 45px; /* Ajusta el espacio entre los iconos en dispositivos móviles */
+    }
+    .form-monto {
+        margin-top: 15px;
+        text-align: left;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px; /* Espacio entre el input y el botón */
+    }
+    .button-monto {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .tcambio-conversion {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
     }
 }
 
@@ -51,26 +90,11 @@ h1 {
 .logobanderas {
     display: flex;
     width: 50px; /* Establece el tamaño */
-    height: 50px; /* Establece el tamaño */
+    height: auto; /* Establece el tamaño */
 }
 
 .mail {
     bottom: 70px; /* Coloca el icono de correo un poco más arriba del icono de GitHub */
-}
-
-/* Consulta de medios para pantallas más pequeñas */
-@media (max-width: 600px) {
-    .github-img,
-    .mail {
-        width: 40px; /* Reduce el tamaño en dispositivos móviles */
-        bottom: 5px; /* Ajusta la posición inferior */
-        right: 15px; /* Ajusta la posición derecha */
-    }
-
-    .mail {
-        width: 40px;
-        bottom: 45px; /* Ajusta el espacio entre los iconos en dispositivos móviles */
-    }
 }
 
 .mail {
@@ -141,7 +165,7 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     font-size: 20px;
     font-weight: bold;
@@ -157,7 +181,7 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     font-size: 20px;
     font-weight: bold;
@@ -198,7 +222,6 @@ button:hover {
 }
 
 .input-container {
-    display: flex;
     flex-direction: column; /* Elementos uno debajo del otro */
     gap: 80px; /* Espacio entre el select y el formulario */
 }
@@ -223,6 +246,7 @@ button:hover {
 
 .tcambio-conversion {
     text-align: right;
+display: flex;
 }
 
 .button-monto {

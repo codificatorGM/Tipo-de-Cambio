@@ -344,14 +344,14 @@ function RadiosConversion() {
                             Obtener
                         </button>
                     </form>
-                </div>
-                <div className="tcambio-conversion">
-                    {tCambioConversion()}
+                    <div className="tcambio-conversion">
+                        {tCambioConversion()}
+                    </div>
                 </div>
             </div>
 
             {resultado !== null && (
-            <div className="resultado-container">
+                <div className="resultado-container">
                 {<div className="tcambio-conversion">
                         <div>Resultado: ₡{resultado} </div>
                 </div>}
