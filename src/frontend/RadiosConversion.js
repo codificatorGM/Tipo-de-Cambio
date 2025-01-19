@@ -4,6 +4,9 @@ import logobccr from '../imagenes/logobccr.svg';
 import logobp from '../imagenes/logobp.svg';
 import logobn from '../imagenes/logobn.svg';
 import logosb from '../imagenes/logosb.svg';
+import crc from '../imagenes/crc.svg';
+import usa from '../imagenes/usa.svg';
+import exchange from '../imagenes/exchange.svg';
 
 function RadiosConversion() {
     const [conversionUsdCompraBAC, setConversionUsdCompraBAC] = useState(null);
@@ -29,6 +32,9 @@ function RadiosConversion() {
 
     const [mostrarDolares, setMostrarDolares] = useState(true);
     const [valorBanco, setValorBanco] = useState("bncr");
+
+    const [monto, setMonto] = useState("");
+    const [resultado, setResultado] = useState(null)
 
     // Function to fetch currency conversion rates
     const fetchConversionRate = async () => {
@@ -126,50 +132,65 @@ function RadiosConversion() {
             case "bncr":
                 return <div>
                     <img src={logobccr} alt="BNCR Logo" className="logobancos"/>
-                    <p className="p-conversion"> 1 U$D = ₡{conversionCompraUsdBCCR} <br/>
-                        1 CRC = ${(1 / conversionCompraUsdBCCR).toFixed(4)}
-                    </p>
                 </div>
             case "bn":
                 return <div>
                     <img src={logobn} alt="BN Logo" className="logobancos"/>
-                    <div>
-                    </div>
+                </div>
+            case "bac":
+                return <div><img src={logobac} alt="BAC Logo" className="logobancos"/>
+                </div>
+            case "bp":
+                return <div><img src={logobp} alt="BP Logo" className="logobancos"/>
+                </div>
+            case "sb":
+                return <div><img src={logosb} alt="SB Logo" className="logobancos"/>
+                </div>
+            default:
+                return null;
+        }
+    }
+
+    const tCambioConversion = () => {
+        switch (valorBanco) {
+            case "bncr":
+                return <div><p className="p-conversion"> 1 U$D = ₡{conversionCompraUsdBCCR} <br/>
+                    1 CRC = ${(1 / conversionCompraUsdBCCR).toFixed(4)}
+                </p></div>
+            case "bn":
+                return <div>
                     <p> 1 U$D = ₡{conversionUsdCompraBN} <br/>
                         1 CRC = ${(1 / conversionUsdCompraBN).toFixed(4)}
                     </p>
                 </div>
             case "bac":
-                return <div><img src={logobac} alt="BAC Logo" className="logobancos"/>
-                    <div>
-                    </div>
-                    <p> 1 U$D = ₡{conversionUsdCompraBAC} <br/>
-                        1 CRC = ${(1 / conversionUsdCompraBAC).toFixed(4)}
-                    </p>
-                </div>
+                return <div><p> 1 U$D = ₡{conversionUsdCompraBAC} <br/>
+                    1 CRC = ${(1 / conversionUsdCompraBAC).toFixed(4)}
+                </p></div>
             case "bp":
-                return <div><img src={logobp} alt="BP Logo" className="logobancos"/>
-                    <div>
-                    </div>
-                    <p> 1 U$D = ₡{conversionUsdCompraBP} <br/>
-                        1 CRC = ${(1 / conversionUsdCompraBP).toFixed(4)}
-                    </p>
-                </div>
+                return <div><p> 1 U$D = ₡{conversionUsdCompraBP} <br/>
+                    1 CRC = ${(1 / conversionUsdCompraBP).toFixed(4)}
+                </p></div>
             case "sb":
-                return <div><img src={logosb} alt="SB Logo" className="logobancos"/>
-                    <div>
-                    </div>
-                    <p> 1 U$D = ₡{conversionUsdCompraSB} <br/>
-                        1 CRC = ${(1 / conversionUsdCompraSB).toFixed(4)}
-                    </p>
-                </div>
-            default:
-                return null;
+                return <div><p> 1 U$D = ₡{conversionUsdCompraSB} <br/>
+                    1 CRC = ${(1 / conversionUsdCompraSB).toFixed(4)}
+                </p></div>
         }
-    };
+    }
 
     const cambioBanco = (event) => {
         setValorBanco(event.target.value); // Actualizar banco en cambio de estado
+    };
+
+    const obtenerCambio = (event) => {
+        setMonto(event.target.value); // Actualizar cuando se obtiene valor
+    };
+
+    const obtenerConversion = (e) => {
+        e.preventDefault();
+        const montoInicial = parseFloat(monto);
+        const montoFinal = montoInicial * conversionCompraUsdBCCR;
+        setResultado(montoFinal.toFixed(2)); // Update the result
     };
 
     //Mostrar contenido tipo de cambio
@@ -295,6 +316,14 @@ function RadiosConversion() {
 
     return (
         <>
+            <div className="tcambio-banderas">
+                <img src={usa} alt="usa" className="logobanderas"/>
+                <button className="button-cambio">
+                    <img src={exchange} alt="exchange" className="logobanderas"/>
+                </button>
+                <img src={crc} alt="crc" className="logobanderas"/>
+            </div>
+
             <div className="rates-container-conversion">
                 <div className="left-content">
                     <div className="input-container">
@@ -305,33 +334,48 @@ function RadiosConversion() {
                             <option value="bp">Banco Popular</option>
                             <option value="sb">ScotiaBank</option>
                         </select>
-                        <form id="monto">
-                            <input type="text" placeholder="Monto"/> <br/>
-                            <input type="button" onClick="" value="Submit"/>
-                        </form>
                     </div>
+                    <div className="conversion-logo">{imagenConversion()}</div>
+                    <form className="form-monto" onSubmit={obtenerConversion}>
+                        <label htmlFor="monto">Monto: </label>
+                        <input
+                            type="text"
+                            id="monto"
+                            value={monto}
+                            onChange={obtenerCambio}
+                        />
+                        <button type="submit" className="button-monto">
+                            Obtener
+                        </button>
+                    </form>
                 </div>
-                <div className="right-content">
-                    {imagenConversion()}
+                <div className="tcambio-conversion">
+                    {tCambioConversion()}
                 </div>
             </div>
 
+            {resultado !== null && (
+            <div className="resultado-container">
+                {<div className="tcambio-conversion">
+                        <div>Resultado: ₡{resultado} </div>
+                </div>}
+            </div>)}
 
             <div>
                 <div>
                     <p className="p">Moneda:</p>
                     <button onClick={() => setMostrarDolares(true)}
                             disabled={mostrarDolares}>USD
-                    </button>
-                    <button onClick={() => setMostrarDolares(false)}
-                            disabled={!mostrarDolares}>EUR
-                    </button>
+                        </button>
+                        <button onClick={() => setMostrarDolares(false)}
+                                disabled={!mostrarDolares}>EUR
+                        </button>
+                    </div>
+                    <br/>
+                    {contenido}
                 </div>
-                <br/>
-                {contenido}
-            </div>
-        </>
-    );
-}
+            </>
+            );
+            }
 
-export default RadiosConversion;
+            export default RadiosConversion;

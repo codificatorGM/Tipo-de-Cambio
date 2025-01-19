@@ -48,6 +48,12 @@ h1 {
     width: 100px; /* Set the size */
 }
 
+.logobanderas {
+    display: flex;
+    width: 50px; /* Set the size */
+    height: 50px; /* Set the size */
+}
+
 .mail {
     bottom: 70px; /* Place the mail icon slightly above the GitHub icon */
 }
@@ -160,6 +166,38 @@ button:hover {
     margin-bottom: 50px;
 }
 
+.tcambio-banderas {
+    display: flex;
+    justify-content: space-between; /* Divide el espacio entre los dos extremos */
+    gap: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: #002B5B;
+    margin-bottom: 50px;
+}
+
+.resultado-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: #002B5B;
+    margin-bottom: 50px;
+}
+
 .input-container {
     display: flex;
     flex-direction: column; /* Elementos uno debajo del otro */
@@ -169,6 +207,48 @@ button:hover {
 .right-content {
     text-align: right;
     flex: 1;
+}
+
+.conversion-logo {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.form-monto {
+    margin-top: 15px;
+    text-align: left;
+    display: flex;
+    align-items: center; /* Align input and button vertically */
+    gap: 10px; /* Space between input and button */
+}
+
+.tcambio-conversion {
+    text-align: right;
+}
+
+.button-monto {
+    background-color: #FF8C42;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    margin-left: 20px;
+}
+
+.button-cambio {
+    background-color: #FF8C42;
+    border: none;
+    padding: 0;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 12px;
 }
 
 .eur-rates-container {
