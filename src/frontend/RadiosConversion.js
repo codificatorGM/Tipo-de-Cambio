@@ -33,7 +33,7 @@ function RadiosConversion() {
     const [mostrarDolares, setMostrarDolares] = useState(true);
     const [valorBanco, setValorBanco] = useState("bncr");
 
-    const [monto, setMonto] = useState("");
+    const [monto, setMonto] = useState(null);
     const [resultado, setResultado] = useState(null)
 
     // Function to fetch currency conversion rates
@@ -340,7 +340,7 @@ function RadiosConversion() {
                     <form className="form-monto" onSubmit={obtenerConversion}>
                         <label htmlFor="monto">Monto: </label>
                         <input
-                            type="text"
+                            type="number"
                             id="monto"
                             value={monto}
                             onChange={obtenerCambio}
