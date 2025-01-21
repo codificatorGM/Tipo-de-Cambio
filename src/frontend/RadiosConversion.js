@@ -31,9 +31,10 @@ function RadiosConversion() {
     const [conversionUsdVentaSB, setConversionUsdVentaSB] = useState(null);
 
     const [mostrarDolares, setMostrarDolares] = useState(true);
+    const [cambioBandera, setCambioBandera] = useState(0);
     const [valorBanco, setValorBanco] = useState("bncr");
 
-    const [monto, setMonto] = useState(null);
+    const [monto, setMonto] = useState(0);
     const [resultado, setResultado] = useState(null)
 
     // Function to fetch currency conversion rates
@@ -181,14 +182,59 @@ function RadiosConversion() {
     };
 
     const obtenerCambio = (event) => {
-        setMonto(event.target.value); // Actualizar cuando se obtiene valor
+        setMonto(event.target.value); // Actualizar cambio cuando se obtiene valor
     };
 
+    useEffect(() => {
+            const montoInicial = parseFloat(monto);
+            let montoFinal;
+
+            if (cambioBandera === 0) {
+                switch (valorBanco) {
+                    case "bncr":
+                        montoFinal = montoInicial * conversionCompraUsdBCCR;
+                        break;
+                    case "bn":
+                        montoFinal = montoInicial * conversionUsdCompraBN;
+                        break;
+                    case "bac":
+                        montoFinal = montoInicial * conversionUsdCompraBAC;
+                        break;
+                    case "bp":
+                        montoFinal = montoInicial * conversionUsdCompraBP;
+                        break;
+                    case "sb":
+                        montoFinal = montoInicial * conversionUsdCompraSB;
+                        break;
+                    default:
+                        montoFinal = null;
+                }
+            } else if (cambioBandera === 1) {
+                switch (valorBanco) {
+                    case "bncr":
+                        montoFinal = montoInicial / conversionVentaUsdBCCR;
+                        break;
+                    case "bn":
+                        montoFinal = montoInicial / conversionUsdVentaBN;
+                        break;
+                    case "bac":
+                        montoFinal = montoInicial / conversionUsdVentaBAC;
+                        break;
+                    case "bp":
+                        montoFinal = montoInicial / conversionUsdVentaBP;
+                        break;
+                    case "sb":
+                        montoFinal = montoInicial / conversionUsdVentaSB;
+                        break;
+                    default:
+                        montoFinal = null;
+                }
+            }
+                setResultado(montoFinal.toFixed(2));
+    }, [cambioBandera, conversionCompraUsdBCCR, conversionUsdCompraBAC, conversionUsdCompraBN, conversionUsdCompraBP, conversionUsdCompraSB, conversionUsdVentaBAC, conversionUsdVentaBN, conversionUsdVentaBP, conversionUsdVentaSB, conversionVentaUsdBCCR, monto, valorBanco]);
+    
     const obtenerConversion = (e) => {
         e.preventDefault();
-        const montoInicial = parseFloat(monto);
-        const montoFinal = montoInicial * conversionCompraUsdBCCR;
-        setResultado(montoFinal.toFixed(2)); //Actualizar resultado a montoFinal
     };
 
     //Mostrar contenido tipo de cambio
@@ -310,14 +356,44 @@ function RadiosConversion() {
             </>
         )
     }
-    return (
+
+    let contenidoBandera;
+    if (cambioBandera === 0) {
+        contenidoBandera = (
+            <>
+        <div className="tcambio-banderas">
+            <img src={usa} alt="usa" className="logobanderas"/>
+            <button onClick={ ()=> {
+                   setCambioBandera(1)
+                }
+            } className="button-cambio">
+                <img src={exchange} alt="exchange" className="logobanderas"/>
+            </button>
+            <img src={crc} alt="crc" className="logobanderas"/>
+        </div>
+            </>
+        )
+    } else if (cambioBandera === 1) {
+        contenidoBandera = (
         <>
             <div className="tcambio-banderas">
-                <img src={usa} alt="usa" className="logobanderas"/>
-                <button className="button-cambio">
+                <img src={crc} alt="crc" className="logobanderas"/>
+                <button onClick={ ()=> {
+                    setCambioBandera(0)
+                }
+                } className="button-cambio">
                     <img src={exchange} alt="exchange" className="logobanderas"/>
                 </button>
-                <img src={crc} alt="crc" className="logobanderas"/>
+                <img src={usa} alt="usa" className="logobanderas"/>
+            </div>
+        </>
+        )
+    }
+
+    return (
+        <>
+            <div>
+                {contenidoBandera}
             </div>
 
             <div className="rates-container-conversion">
@@ -332,7 +408,7 @@ function RadiosConversion() {
                         </select>
                     </div>
                     <div className="conversion-logo">{imagenConversion()}</div>
-                    <form className="form-monto" onSubmit={obtenerConversion}>
+                    <form className="form-monto">
                         <label htmlFor="monto">Monto: </label>
                         <input
                             type="number"
@@ -340,9 +416,6 @@ function RadiosConversion() {
                             value={monto}
                             onChange={obtenerCambio}
                         />
-                        <button type="submit" className="button-monto">
-                            Obtener
-                        </button>
                     </form>
                     <div className="tcambio-conversion">
                         {tCambioConversion()}
