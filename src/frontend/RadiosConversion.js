@@ -4,9 +4,11 @@ import logobccr from '../imagenes/logobccr.svg';
 import logobp from '../imagenes/logobp.svg';
 import logobn from '../imagenes/logobn.svg';
 import logosb from '../imagenes/logosb.svg';
+import logobla from '../imagenes/logobla.svg';
 import crc from '../imagenes/crc.svg';
 import usa from '../imagenes/usa.svg';
 import exchange from '../imagenes/exchange.svg';
+import fetch from "node-fetch";
 
 function RadiosConversion() {
     const [conversionUsdCompraBAC, setConversionUsdCompraBAC] = useState(null);
@@ -29,6 +31,11 @@ function RadiosConversion() {
 
     const [conversionUsdCompraSB, setConversionUsdCompraSB] = useState(null);
     const [conversionUsdVentaSB, setConversionUsdVentaSB] = useState(null);
+
+    const [conversionUsdCompraBLA, setConversionUsdCompraBLA] = useState(null);
+    const [conversionUsdVentaBLA, setConversionUsdVentaBLA] = useState(null);
+    const [conversionEurCompraBLA, setConversionEurCompraBLA] = useState(null);
+    const [conversionEurVentaBLA, setConversionEurVentaBLA] = useState(null);
 
     const [mostrarDolares, setMostrarDolares] = useState(true);
     const [cambioBandera, setCambioBandera] = useState(0);
@@ -62,6 +69,13 @@ function RadiosConversion() {
         setconversionEurUsdBCCR(dataBCCR.euro.dolares);
         setconversionEurUsdBCCR(dataBCCR.euro.valor);
         setconversionEurCrcBCCR(dataBCCR.euro.colones);
+
+        const respuestaBLA = await fetch ("https://www.lafise.com/OpenBankingProxy/obl/v1/banks/BLCR/rates");
+        const dataBBLA = await respuestaBLA.json();
+        setConversionUsdCompraBLA(dataBBLA.rates.USD.buying);
+        setConversionUsdVentaBLA(dataBBLA.rates.USD.selling);
+        setConversionEurCompraBLA(dataBBLA.rates.EUR.buying);
+        setConversionEurVentaBLA(dataBBLA.rates.EUR.selling);
 
         const respuestaBP = await fetch("https://www.appsbp.com/WsSINPEMovilV2/ServiciosGeneral/indicadoresfinancieros");
         const dataBP = await respuestaBP.json(); //Obtener respuesta formato json
@@ -309,6 +323,19 @@ function RadiosConversion() {
                     </div>
                 </div>
 
+                <div className="rates-container">
+                    <img src={logobla} alt={logobla}
+                         className="logobancos"/>
+                    <div className="rate-item">
+                        <p>Compra</p>
+                        <p>{conversionUsdCompraBLA ? `₡${conversionUsdCompraBLA}` : "Cargando..."}</p>
+                    </div>
+                    <div className="rate-item">
+                        <p>Venta</p>
+                        <p>{conversionUsdVentaBLA ? `₡${conversionUsdVentaBLA}` : "Cargando..."}</p>
+                    </div>
+                </div>
+
             </>
         )
     } else if (!mostrarDolares) {
@@ -351,6 +378,19 @@ function RadiosConversion() {
                     <div className="rate-item">
                         <p>Venta</p>
                         <p>{conversionEurCompraBAC ? `₡${conversionEurCompraBAC}` : "Cargando..."}</p>
+                    </div>
+                </div>
+
+                <div className="rates-container">
+                    <img src={logobla} alt={logobla}
+                         className="logobancos"/>
+                    <div className="rate-item">
+                        <p>Compra</p>
+                        <p>{conversionEurVentaBLA ? `₡${conversionEurVentaBLA}` : "Cargando..."}</p>
+                    </div>
+                    <div className="rate-item">
+                        <p>Venta</p>
+                        <p>{conversionEurCompraBLA ? `₡${conversionEurCompraBLA}` : "Cargando..."}</p>
                     </div>
                 </div>
             </>
