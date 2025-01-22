@@ -67,9 +67,13 @@ function RadiosConversion() {
         setconversionCompraUsdBCCR(dataBCCR.dolar.compra.valor);
         setconversionVentaUsdBCCR(dataBCCR.dolar.venta.valor);
         setconversionEurUsdBCCR(dataBCCR.euro.dolares);
-        setconversionEurUsdBCCR(dataBCCR.euro.valor);
+        //API Hacienda cambia constantemente, validar cambios en JSON para mostrar valor existente
+        if (conversionEurUsdBCCR === false) {
+            setconversionEurUsdBCCR(dataBCCR.euro.valor);
+        }
         setconversionEurCrcBCCR(dataBCCR.euro.colones);
 
+        //Obtener tipo de cambio Banco LAFISE
         const respuestaBLA = await fetch ("https://www.lafise.com/OpenBankingProxy/obl/v1/banks/BLCR/rates");
         const dataBBLA = await respuestaBLA.json();
         setConversionUsdCompraBLA(dataBBLA.rates.USD.buying);
@@ -443,6 +447,26 @@ function RadiosConversion() {
         )
     }
 
+    let resultadoDivisa;
+    if (cambioBandera === 0) {
+        resultadoDivisa = (
+            resultado !== null && (
+                <div className="resultado-container">
+                    {<div className="tcambio-conversion">
+                        <div>Resultado: ₡{resultado} </div>
+                    </div>}
+                </div>))
+    } else if (cambioBandera === 1) {
+            resultadoDivisa = (
+                resultado !== null && (
+                    <div className="resultado-container">
+                        {<div className="tcambio-conversion">
+                            <div>Resultado: ${resultado} </div>
+                        </div>}
+                    </div>)
+            )
+        }
+
     return (
         <>
             <div>
@@ -477,12 +501,7 @@ function RadiosConversion() {
                 </div>
             </div>
 
-            {resultado !== null && (
-                <div className="resultado-container">
-                {<div className="tcambio-conversion">
-                        <div>Resultado: ₡{resultado} </div>
-                </div>}
-            </div>)}
+            {resultadoDivisa}
 
             <div>
                 <div>
