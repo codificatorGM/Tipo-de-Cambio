@@ -170,7 +170,7 @@ function RadiosConversion() {
                 return null;
         }
     }
-
+    //Mostrar tipo de cambio en componente conversion dependiendo del  banco seleccionado
     const tCambioConversion = () => {
         switch (valorBanco) {
             case "bncr":
@@ -474,7 +474,7 @@ function RadiosConversion() {
             </div>
 
             <div className="rates-container-conversion">
-                <div className="left-content">
+                <div>
                     <div className="input-container">
                         <select name="bancos" id="bancos" value={valorBanco} onChange={cambioBanco}>
                             <option value="bncr">BNCR</option>

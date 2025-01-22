@@ -175,13 +175,13 @@ button:hover {
 
 .rates-container-conversion {
     display: flex;
-    justify-content: space-between; /* Divide el espacio entre los dos extremos */
+    justify-content: center; /* Divide el espacio entre los dos extremos */
     gap: 20px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    max-width: 500px;
+    max-width: 300px;
     margin: 0 auto;
     font-size: 20px;
     font-weight: bold;
@@ -233,19 +233,15 @@ button:hover {
 
 .conversion-logo {
     margin-top: 20px;
-    text-align: left;
 }
 
 .form-monto {
     margin-top: 15px;
-    text-align: left;
     display: flex;
-    align-items: center; /* Alinea el input y el botón verticalmente */
     gap: 10px; /* Espacio entre el input y el botón */
 }
 
 .tcambio-conversion {
-    text-align: right;
 display: flex;
 }
 
