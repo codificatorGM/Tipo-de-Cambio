@@ -159,6 +159,9 @@ function RadiosConversion() {
             case "sb":
                 return <div><img src={logosb} alt="SB Logo" className="logobancos"/>
                 </div>
+            case "bla":
+                return <div><img src={logobla} alt="BLA Logo" className="logobancos"/>
+                </div>
             default:
                 return null;
         }
@@ -187,6 +190,10 @@ function RadiosConversion() {
             case "sb":
                 return <div><p> 1 U$D = ₡{conversionUsdCompraSB} <br/>
                     1 CRC = ${(1 / conversionUsdCompraSB).toFixed(4)}
+                </p></div>
+            case "bla":
+                return <div><p> 1 U$D = ₡{conversionUsdCompraBLA} <br/>
+                    1 CRC = ${(1 / conversionUsdCompraBLA).toFixed(4)}
                 </p></div>
         }
     }
@@ -220,6 +227,9 @@ function RadiosConversion() {
                     case "sb":
                         montoFinal = montoInicial * conversionUsdCompraSB;
                         break;
+                    case "bla":
+                        montoFinal = montoInicial * conversionUsdCompraBLA;
+                        break;
                     default:
                         montoFinal = null;
                 }
@@ -240,12 +250,15 @@ function RadiosConversion() {
                     case "sb":
                         montoFinal = montoInicial / conversionUsdVentaSB;
                         break;
+                    case "bla":
+                        montoFinal = montoInicial / conversionUsdVentaBLA;
+                        break;
                     default:
                         montoFinal = null;
                 }
             }
                 setResultado(montoFinal.toFixed(2));
-    }, [cambioBandera, conversionCompraUsdBCCR, conversionUsdCompraBAC, conversionUsdCompraBN, conversionUsdCompraBP, conversionUsdCompraSB, conversionUsdVentaBAC, conversionUsdVentaBN, conversionUsdVentaBP, conversionUsdVentaSB, conversionVentaUsdBCCR, monto, valorBanco]);
+    }, [cambioBandera, conversionCompraUsdBCCR, conversionUsdCompraBAC, conversionUsdCompraBLA, conversionUsdCompraBN, conversionUsdCompraBP, conversionUsdCompraSB, conversionUsdVentaBAC, conversionUsdVentaBLA, conversionUsdVentaBN, conversionUsdVentaBP, conversionUsdVentaSB, conversionVentaUsdBCCR, monto, valorBanco]);
     
     const obtenerConversion = (e) => {
         e.preventDefault();
@@ -445,6 +458,7 @@ function RadiosConversion() {
                             <option value="bac">BAC</option>
                             <option value="bp">Banco Popular</option>
                             <option value="sb">ScotiaBank</option>
+                            <option value="bla">Banco LAFISE</option>
                         </select>
                     </div>
                     <div className="conversion-logo">{imagenConversion()}</div>
