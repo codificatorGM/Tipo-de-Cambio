@@ -403,11 +403,11 @@ function RadiosConversion() {
                          className="logobancos"/>
                     <div className="rate-item">
                         <p>Compra</p>
-                        <p>{conversionEurVentaBLA ? `₡${conversionEurVentaBLA}` : "Cargando..."}</p>
+                        <p>{conversionEurCompraBLA ? `₡${conversionEurCompraBLA}` : "Cargando..."}</p>
                     </div>
                     <div className="rate-item">
                         <p>Venta</p>
-                        <p>{conversionEurCompraBLA ? `₡${conversionEurCompraBLA}` : "Cargando..."}</p>
+                        <p>{conversionEurVentaBLA ? `₡${conversionEurVentaBLA}` : "Cargando..."}</p>
                     </div>
                 </div>
             </>
